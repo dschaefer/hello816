@@ -20,6 +20,7 @@
     cpuemu
     rts
 
+    .export print
     .proc print
     ; B, X = pointer to string
     pha

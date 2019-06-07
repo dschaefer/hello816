@@ -2,3 +2,5 @@
 *.d
 *.prg
 *.list
+*.map
+*.vice
