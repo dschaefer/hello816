@@ -6,16 +6,19 @@
     cpunat
     ai16
     swapStacks basic_stack, python_stack
+    phd
+
+    ; move the dp somewhere to prove it works
+    lda #$5000
+    tad
 
     ldx #hello
     jsr print
 
+    pld
     swapStacks python_stack, basic_stack
-    ai8
     cpuemu
     rts
-    .a16
-    .i16
 
     .proc print
     ; B, X = pointer to string
