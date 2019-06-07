@@ -21,7 +21,7 @@
     rts
 
     .export print
-    .proc print
+.proc print
     ; B, X = pointer to string
     pha
     phy
@@ -61,7 +61,7 @@ done:
     ply
     pla
     rts
-    .endproc
+.endproc
 
 hello:
     .asciiz "hello world!"
