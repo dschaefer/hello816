@@ -1,14 +1,18 @@
+PROGRAM = hello.prg
+OBJS = \
+	hello.o
+
 AS = cl65
 ASFLAGS = -c -t c64 -l $(basename $<).list --create-dep $(basename $<).d
 LDFLAGS = -t c64 -C c64-asm.cfg -u __EXEHDR__ -m $(basename $<).map -Ln $(basename $<).vice
 
-hello.prg:	hello.o
+$(PROGRAM): $(OBJS)
 	cl65 $(LDFLAGS) -o $@ $^
 
--include hello.d
+-include $(OBJS:.o=.d)
 
 clean:
-	del *.o *.d
+	del *.o *.d *.list *.map *.vice *.prg
 
-run:	hello.prg
-	xscpu64 -moncommands hello.vice -fs9 . -device9 1 -iecdevice9 hello.prg
+run:	$(PROGRAM)
+	xscpu64 -moncommands hello.vice -fs9 . -device9 1 -iecdevice9 $(PROGRAM)
